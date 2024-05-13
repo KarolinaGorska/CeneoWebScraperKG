@@ -8,15 +8,15 @@ def index():
 
 
 @app.route('/extract')
-def index():
+def extract():
     return render_template("extract.html")
 
 @app.route('/products')
-def index():
+def products():
     return render_template("products.html")
 
 @app.route('/about')
-def index():
+def about():
     return render_template("about.html")
 
 
