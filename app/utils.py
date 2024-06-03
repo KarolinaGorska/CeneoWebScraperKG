@@ -1,3 +1,17 @@
+selectors = {
+        "opinion_id": (None, "data-entry-id"),
+        "author": ("span.user-post__author-name",),
+        "recommendation": ("span.user-post__author-recomendation",),
+        "stars": ("span.user-post__score-count",),
+        "content": ("div.user-post__text",),
+        "pros": ("div.review-feature__title--positives ~ div.review-feature__item", None, True),
+        "cons": ("div.review-feature__title--negatives ~ div.review-feature__item", None, True),
+        "helpful": ("button.vote-yes > span",),
+        "unhelpful": ("button.vote-no > span",),
+        "publish_date": ("span.user-post__published > time:nth-child(1)", "datetime"),
+        "purchase_date": ("span.user-post__published > time:nth-child(2)", "datetime"),
+    }
+
 def extract(ancestor, selector=None, attribute=None, return_list=False):
     if selector:
         if return_list:
@@ -16,18 +30,3 @@ def extract(ancestor, selector=None, attribute=None, return_list=False):
     if attribute:
         return ancestor[attribute].strip()
     return ancestor.text.strip()
-
-
-selectors = {
-    "opinion_id":(None, "data-entry-id"),
-    "author":("span.user-post__author-name",),
-    "recommendation": ("span.user-post__author-recomendation",),
-    "stars": ("span.user-post__score-count",),
-    "content": (".user-post__text",),
-    "pros": ("div.review-feature__title--positives ~ div.review-feature__item", None, True),
-    "cons": ("div.review-feature__title--negatives ~ div.review-feature__item", None, True),
-    "helpful": ("button.vote-yes > span",),
-    "unhelpful": ("button.vote-no > span",),
-    "publish_date": ('span.user-post__published > time:nth-child(1)', "datetime",),
-    "purchase_date": ('span.user-post__published > time:nth-child(2)', "datetime",),
-}
